@@ -2,6 +2,9 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.EventDao;
+import com.techelevator.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +17,19 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
 public class AuthenticationController {
+
+
+    @Autowired
+    EventDao eventDao;
 
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -44,7 +50,7 @@ public class AuthenticationController {
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.createToken(authentication, false);
-        
+
         User user = userDao.findByUsername(loginDto.getUsername());
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -59,8 +65,36 @@ public class AuthenticationController {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
-            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+            userDao.create(newUser.getName(), newUser.getUsername(), newUser.getPassword(), newUser.getRole(), newUser.isOrganization(), newUser.getAddress(), newUser.getBirthDate());
         }
+    }
+    @RequestMapping(path = "/api/users", method = RequestMethod.GET)
+    public List<User> findAll() {
+        List<User> allUsers = userDao.findAll();
+        return allUsers;
+    }
+
+    @RequestMapping(path = "/api/users/{id}", method = RequestMethod.GET)
+    public User get(@PathVariable int id) {
+        User users = userDao.getUserById(id);
+        if (users == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Event Not Found");
+        } else {
+            return userDao.getUserById(id);
+        }
+    }
+    @RequestMapping(path = "/api/users/{id}", method = RequestMethod.PUT)
+    public void update(@Valid @RequestBody User user, @Valid @PathVariable int id){
+        userDao.update(user, id);
+    }
+
+    @RequestMapping(path = "/api/users/events/{id}", method = RequestMethod.GET)
+    public List<User> getEventId(@PathVariable int id) {
+        Event event = new Event();
+        int eventId = event.getEventId(id);
+
+        return userDao.byEventId(id);
+
     }
 
     /**
@@ -70,6 +104,7 @@ public class AuthenticationController {
 
         private String token;
         private User user;
+
 
         LoginResponse(String token, User user) {
             this.token = token;
@@ -94,5 +129,6 @@ public class AuthenticationController {
 			this.user = user;
 		}
     }
+
 }
 

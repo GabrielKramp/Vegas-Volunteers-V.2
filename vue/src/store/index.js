@@ -11,6 +11,9 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentUserId = localStorage.getItem('userId')
+// const currentOrgPic = localStorage.getItem('orgPic')
+
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -19,7 +22,9 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    userId: currentUserId || '',
+    // orgPic: currentOrgPic || '',
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -31,12 +36,26 @@ export default new Vuex.Store({
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },
+    SET_USER_ID(state, userId){
+      state.userId = userId;
+      localStorage.setItem('userId', userId)
+    },
+    SET_ORG_PIC(state, orgPic){
+      state.orgPic = orgPic;
+      localStorage.setItem('orgPic', orgPic)
+    },
     LOGOUT(state) {
+      console.log("logout1")
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('user_Id');
+      localStorage.removeItem('orgPic');
       state.token = '';
+      state.userId = '';
+      state.orgPic = '';
       state.user = {};
       axios.defaults.headers.common = {};
+      console.log("logout2")
     }
   }
 })
