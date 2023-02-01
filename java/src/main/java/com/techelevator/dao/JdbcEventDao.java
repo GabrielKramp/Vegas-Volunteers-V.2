@@ -46,15 +46,15 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean updateEvent(Event event, int id){
-        String sql = "UPDATE event SET name = ?, org_owner = ?, org_logo = ?, address = ?, start_date = ?, end_date = ?, start_time = ?, end_time = ?, description = ?, user_counter = ? WHERE id = ? ";
-        return jdbcEventTemplate.update(sql, event.getName(), event.getownerId(), event.getOrgLogo(), event.getAddress(), event.getStartDate(), event.getEndDate(), event.getStartTime(), event.getEndTime(), event.getDescription(), event.getCounter(), id) == 1;
+    public boolean updateEvent(Event event, int id){ //, user_counter = ?  event.getCounter(), leaving these here in case we need later
+        String sql = "UPDATE event SET name = ?, org_owner = ?, org_logo = ?, address = ?, start_date = ?, end_date = ?, start_time = ?, end_time = ?, description = ?WHERE id = ? ";
+        return jdbcEventTemplate.update(sql, event.getName(), event.getownerId(), event.getOrgLogo(), event.getAddress(), event.getStartDate(), event.getEndDate(), event.getStartTime(), event.getEndTime(), event.getDescription(),id) == 1;
     }
 
     @Override
-    public boolean createEvent(Event newEvent){
-        String sql = "INSERT INTO event (id, name, org_owner, org_logo, address, start_date, end_date, start_time, end_time, description, user_counter) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        return jdbcEventTemplate.update(sql, newEvent.getName(), newEvent.getownerId(), newEvent.getOrgLogo(), newEvent.getAddress(), newEvent.getStartDate(), newEvent.getEndDate(), newEvent.getStartTime(), newEvent.getEndTime(), newEvent.getDescription(), newEvent.getCounter()) == 1;
+    public boolean createEvent(Event newEvent){ //, user_counter , newEvent.getCounter() in case we need later
+        String sql = "INSERT INTO event (id, name, org_owner, org_logo, address, start_date, end_date, start_time, end_time, description) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return jdbcEventTemplate.update(sql, newEvent.getName(), newEvent.getownerId(), newEvent.getOrgLogo(), newEvent.getAddress(), newEvent.getStartDate(), newEvent.getEndDate(), newEvent.getStartTime(), newEvent.getEndTime(), newEvent.getDescription()) == 1;
     }
     @Override
     public boolean deleteEvent(int id) {
@@ -74,7 +74,7 @@ public class JdbcEventDao implements EventDao {
         ev.setStartTime(rs.getString("start_time"));
         ev.setEndTime(rs.getString("end_time"));
         ev.setDescription(rs.getString("description"));
-        ev.setCounter(rs.getInt("user_counter"));
+//        ev.setCounter(rs.getInt("user_counter"));
         return ev;
     };
 

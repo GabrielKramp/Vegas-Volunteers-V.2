@@ -61,7 +61,6 @@
           <button class=dd-btn><router-link :to="{ name: 'home' }">Log Out</router-link></button>
         </div>
       </div>
-
   </div>
 </template>
 
