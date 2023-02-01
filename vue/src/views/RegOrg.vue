@@ -130,7 +130,7 @@ export default {
           .then((response) => {
             console.log("this shit work");
             if (response.status == 201) {
-              this.$router.push("/login");
+              this.$router.push("/orgProfile");
               window.location.reload();
             }
           })

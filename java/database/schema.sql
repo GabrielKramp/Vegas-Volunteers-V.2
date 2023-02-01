@@ -31,7 +31,6 @@ CREATE TABLE event (
 	start_time time NOT NULL,
 	end_time time NOT NULL,
 	description varchar(500),
-
 );
 CREATE TABLE message (
 	id SERIAL PRIMARY KEY,

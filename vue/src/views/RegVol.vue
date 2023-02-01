@@ -137,7 +137,7 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push("/login");
+              this.$router.push("/volHome");
               window.location.reload();
             }
           })

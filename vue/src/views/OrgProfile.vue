@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="home">
     <div id="home-head">
       <div id="home-nav-bar">
@@ -23,11 +23,11 @@
         </div>
       </div>
     </div>
-
+</div>
     <div id="home-body">
       <form action="" id="my-tabs">
-        <!-- <button>LISTINGS</button>
-        <button>APPLIED</button><br/> -->
+        <button>LISTINGS</button>
+        <button>APPLIED</button><br/>
       </form>
 
       <form action="">
@@ -124,7 +124,7 @@
         COPYRIGHT © 2022 PUNCHCODE COHORT 3
       </div>
     </div>
-
+</div>
     <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
       <div class="navlist">
         <button class="dd-btn">
@@ -472,4 +472,4 @@ a {
   color: black;
   text-decoration: none;
 }
-</style>
+</style> -->
