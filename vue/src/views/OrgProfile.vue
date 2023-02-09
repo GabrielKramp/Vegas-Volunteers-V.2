@@ -23,7 +23,8 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
+
     <div id="home-body">
       <form action="" id="my-tabs">
         <button>LISTINGS</button>
@@ -125,6 +126,7 @@
       </div>
     </div>
 </div>
+
     <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
       <div class="navlist">
         <button class="dd-btn">
@@ -159,8 +161,8 @@ export default {
         users: null,
         showModal: false,
       }
-    },
-  
+  },
+
   components: {
     Modal,
   },
@@ -220,11 +222,8 @@ export default {
       console.log("We logged out...kinda");
     },    
   }
-
-};
-
-
-};
+}
+;
 </script>
 
 <style scoped>
@@ -241,7 +240,6 @@ export default {
   position: relative;
   bottom: 60px;
 }
-
 #to-go-box {
   float: right;
   display: flex;

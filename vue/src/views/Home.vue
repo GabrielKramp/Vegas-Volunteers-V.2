@@ -35,6 +35,7 @@
           <p>{{event.startTime}} am - {{event.endTime}} pm</p>
           <button class="volunteer-btn" @click="menuOpen = !menuOpen, mustSignIn()">Volunteer For Event</button>
         </div>
+        <img src="../img/PunchCodeLogo.png" id="hidden-logo">
     </div> 
     <div id="main-footer"> 
       COPYRIGHT © 2022 PUNCHCODE COHORT 3
@@ -250,5 +251,8 @@ a {
 
 #org-name{
   font-family: Arial, Helvetica, sans-serif;
+}
+#hidden-logo{
+  display: none;
 }
 </style>
