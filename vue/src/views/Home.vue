@@ -140,10 +140,10 @@ export default {
 }
 
 .event-box {
-
+  
   /* box-sizing: border-box;  */
   width: 80vw;
-  height: 31vh;
+  height: 32vh;
   /* border: 2px solid black; */
   text-align: left;
   padding: 20px 0 0 15px;

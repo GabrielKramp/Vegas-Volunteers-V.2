@@ -203,7 +203,7 @@ export default {
       this.$router.push("/message");
     },
     deleteEvent(){
-      prompt("Type `DELETE` to delete event")
+      prompt("Are you sure you want to delete this post?")
       .then(alert("Event has been deleted!"))
         axios
       .delete('http://localhost:9000/api/events/6')
