@@ -35,7 +35,6 @@
           <p>{{event.startTime}} am - {{event.endTime}} pm</p>
           <button class="volunteer-btn" @click="menuOpen = !menuOpen, mustSignIn()">Volunteer For Event</button>
         </div>
-        <img src="../img/PunchCodeLogo.png" id="hidden-logo">
     </div> 
     <div id="main-footer"> 
       COPYRIGHT © 2022 PUNCHCODE COHORT 3
@@ -58,6 +57,7 @@
     </div>
     <img src="../img/ThreeSquareLogo.png" class="hide" alt="">
     <img src="../img/InnovateForVegas.png" class="hide" alt="">
+    <img src="../img/PunchCodeLogo.png" class="hide" alt="">
   </div>
 </template>
 
@@ -131,15 +131,19 @@ export default {
   border-bottom: 2px solid black;
 }
 #event-container {
-  height: 53vh;
+  height: 54vh;
   overflow: scroll;
   padding: auto;
   padding-top: 20px;
+  box-sizing: content-box;
+
 }
 
 .event-box {
+
+  /* box-sizing: border-box;  */
   width: 80vw;
-  height: 30vh;
+  height: 31vh;
   /* border: 2px solid black; */
   text-align: left;
   padding: 20px 0 0 15px;
