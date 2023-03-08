@@ -57,6 +57,7 @@
     </div>
     <img src="../img/ThreeSquareLogo.png" class="hide" alt="">
     <img src="../img/InnovateForVegas.png" class="hide" alt="">
+    <img src="../img/PunchCodeLogo.png" class="hide" alt="">
   </div>
 </template>
 
@@ -130,15 +131,19 @@ export default {
   border-bottom: 2px solid black;
 }
 #event-container {
-  height: 53vh;
+  height: 54vh;
   overflow: scroll;
   padding: auto;
   padding-top: 20px;
+  box-sizing: content-box;
+
 }
 
 .event-box {
+
+  /* box-sizing: border-box;  */
   width: 80vw;
-  height: 30vh;
+  height: 31vh;
   /* border: 2px solid black; */
   text-align: left;
   padding: 20px 0 0 15px;
@@ -250,5 +255,8 @@ a {
 
 #org-name{
   font-family: Arial, Helvetica, sans-serif;
+}
+#hidden-logo{
+  display: none;
 }
 </style>

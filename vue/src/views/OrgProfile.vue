@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div id="home">
     <div id="home-head">
       <div id="home-nav-bar">
@@ -23,7 +23,8 @@
         </div>
       </div>
     </div>
-</div>
+  
+
     <div id="home-body">
       <form action="" id="my-tabs">
         <button>LISTINGS</button>
@@ -51,14 +52,14 @@
                           <button class="volunteer-btn" @click="mustSignIn()">Edit Event</button>
                           <button class="volunteer-btn" @click="deleteEvent()">Delete Event</button>
                         </div>
-             <div class="event-box">
-            <img class="event-box-logo" src="../img/PunchCodeLogo.png"/>
+             <!-- <div class="event-box">
+            <img class="event-box-logo" src="../img/PunchCodeLogo.png"/> -->
 
-            <h3>PunchCode Tech Alley Meet<br/>401 S. 4th St<br/>Nov. 1, 2022 - Dec. 23, 2022</h3>
+            <!-- <h3>PunchCode Tech Alley Meet<br/>401 S. 4th St<br/>Nov. 1, 2022 - Dec. 23, 2022</h3>
             <button class="expand-btn">Delete</button>
-            <button class="expand-btn">Edit</button>
+            <button class="expand-btn">Edit</button> -->
 
-        <div class="org-events">
+        <!-- <div class="org-events">
           <h2>Events</h2>
 
           <div class="event-box">
@@ -100,7 +101,7 @@
             <button class="expand-btn">Delete</button>
             <button class="expand-btn">Edit</button>
           </div>
-        </div>
+        </div> -->
         <div class="applied-volunteers">
           <h2>Volunteers</h2>
           <div class="event-box"
@@ -119,12 +120,13 @@
 
           </div>
         </div>
-      </div>
+      
       <div id="main-footer">
         COPYRIGHT © 2022 PUNCHCODE COHORT 3
       </div>
     </div>
 </div>
+
     <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
       <div class="navlist">
         <button class="dd-btn">
@@ -141,10 +143,11 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 <script>
 import axios from 'axios';
-import Modal from "../components/Modal.vue";
+// import Modal from "../components/Modal.vue";
 
 export default {
   name: "orgProfile",
@@ -159,11 +162,11 @@ export default {
         users: null,
         showModal: false,
       }
-    },
-  
-  components: {
-    Modal,
   },
+
+  // components: {
+  //   Modal,
+  // },
   mounted(){
   this.userId = localStorage.userId;
   axios
@@ -220,11 +223,8 @@ export default {
       console.log("We logged out...kinda");
     },    
   }
-
-};
-
-
-};
+}
+;
 </script>
 
 <style scoped>
@@ -241,7 +241,6 @@ export default {
   position: relative;
   bottom: 60px;
 }
-
 #to-go-box {
   float: right;
   display: flex;
@@ -288,7 +287,7 @@ img {
 
 .org-events {
   border: 2px solid black;
-  height: 38vh;
+  height: 99%;
   overflow: scroll;
 }
 
@@ -472,4 +471,4 @@ a {
   color: black;
   text-decoration: none;
 }
-</style> -->
+</style> 

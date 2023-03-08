@@ -130,7 +130,7 @@ export default {
           .then((response) => {
             console.log("this shit work");
             if (response.status == 201) {
-              this.$router.push("/orgProfile");
+              this.$router.push("/orgProfile"); //sends you straight to your profile to customize or edit
               window.location.reload();
             }
           })
